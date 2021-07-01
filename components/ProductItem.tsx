@@ -2,11 +2,9 @@ import { memo, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { AddProductToWishlistPros } from './AddProductToWishlist'
 
-const AddProductToWishlist = dynamic<AddProductToWishlistPros>(async () => {
-  const mod = await import('./AddProductToWishlist');
-  return mod.AddProductToWishlist;
+const AddProductToWishlist = dynamic<AddProductToWishlistPros>(() => {
+  return import('./AddProductToWishlist').then(mod => mod.AddProductToWishlist);
 }, { 
-  // eslint-disable-next-line react/display-name
   loading: () => <span>Carregando...</span> 
 });
 AddProductToWishlist.displayName = 'Add Product To Wishlist';
@@ -37,5 +35,3 @@ function ProductItemComponent({ product, onAddToWishList }: ProductItemProps) {
 export const ProductItem = memo(ProductItemComponent, (prevProps, nextProps) => {
   return Object.is(prevProps.product, nextProps.product);
 })
-
-ProductItem.displayName ='Add';
