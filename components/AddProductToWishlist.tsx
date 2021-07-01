@@ -1,9 +1,9 @@
-interface AddProductToWishlistPros {
+export interface AddProductToWishlistProps {
   onAddToWishList: () => void;
   onRequestClose: () => void;
 }
 
-export function AddProductToWishlist({ onAddToWishList, onRequestClose}: AddProductToWishlistPros) {
+export function AddProductToWishlist({ onAddToWishList, onRequestClose}: AddProductToWishlistProps) {
   return (
     <span>
       Deseja adicionar aos favoritos?
